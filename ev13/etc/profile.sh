@@ -47,9 +47,9 @@ q_Profile2PresetsFN=${q_Profile2PresetsFP##*/}
 [[ -r  $q_Profile2PresetsFP        ]]  &&  source   $q_Profile2PresetsFP       ; ##--user-preset-prof
 
 ##--- pathes-basics0 : evv, upp, const.sh, hostGlob, ...:
-##--OK-if-hostnamectl-there:   Host1full="${Host1full:=$(hostnamectl  hostname)}" ;  ##--II-if hostnamectl not there, just set Host1full to anything you like or to hostname and then call evv1-profs !
-: ${Host1full:=$(hostname)} ;  ##--II-if hostnamectl bzw. hostnamectl not in System/OS, just set Host1full to anything you like or to hostname, then rename the host-profile appropriately, and then  and then call evv1-profs !
-: ${q_Hostname:=${Host1full%%.*}}     ##-II-REF-HOSTNAME-envvar-in-evv ! use ONLY this in evv! no cmds/other-vars/...!! also this can be preset before calling evv-profiles ...!
+: ${q_hostnameCmd1:="hostnamectl  hostname"} ;
+: ${q_Host1full:=$($q_hostnameCmd1)} ;  ##--II-if q_hostnameCmd1 not in System/OS, just set q_Host1full to anything you like or to hostname, then rename the host-profile appropriately, and then  and then call evv1-profs !
+: ${q_Hostname:=${q_Host1full%%.*}}   ##--II-this is REF-HOSTNAME-envvar-in-evv ! use ONLY this in evv! no cmds/other-vars/...!! also this can be preset before calling evv-profiles ...!
 q_EttcDP="${q_OrgCallAbsoluteDP}"
 q_EvvDP="${q_EttcDP%/*}"                 ##-- eg: /up1/ev11
 q_EvvDN="${q_EvvDP##*/}"

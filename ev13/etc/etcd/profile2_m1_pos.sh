@@ -73,13 +73,14 @@ alias viab_du='vi1  $abFP_du'
 
 ############################## bups1-All : ############################################################
 ##=========== bups1-All_RF (also used by rt !! ) : =====================================================================
-bups1ev1()  { echo "===== bups1--${q_EvvDP}/ : ====="; date;  cd  ${vaarAuBups1DP}/  &&  tar --one-file-system  -cpzf  "${vaarAuBups1DP}/ev1_${q_syysTg}_tz--$($cudts)"  "${q_EvvDP}/" ; date; }
-bups1up1()  { echo "===== bups1--${q_UppDP}/ : ====="; date;  cd  ${vaarAuBups1DP}/  &&  tar --one-file-system --exclude="${q_UppDP}/mnt/*/*"  -cpzf  "${vaarAuBups1DP}/up1_${q_syysTg}_tz--$($cudts)"  "${q_UppDP}/" ; date; }
+bups1evv()  { echo "===== bups1--${q_EvvDP}/ : ====="; date;  cd  ${vaarAuBups1DP}/  &&  tar --one-file-system  -cpzf  "${vaarAuBups1DP}/ev1_${q_syysTg}_tz--$($cudts)"  "${q_EvvDPPhys}/"  "${q_EvvDP}/" ; date; }
+bups1upp()  { echo "===== bups1--${q_UppDP}/ : ====="; date;  cd  ${vaarAuBups1DP}/  &&  tar --one-file-system --exclude="${q_UppDP}/mnt/*/*"  -cpzf  "${vaarAuBups1DP}/up1_${q_syysTg}_tz--$($cudts)"  "${q_UppDP}/" ; date; }
 bups1configsUsers()  {   ##--is now called by bups1syys !
-	date; local bupTargetFP11="${syysTgBupsDP}/userss-configSubs-home--$($cudts).tgz"  ;
-	tar --one-file-system  --exclude-caches  --exclude-tag="${q_NoBupFlagFN}"  --show-omitted-dirs  -czpf ${bupTargetFP11} \
+	date; local bupTargetFP11="${syysTgBupsDP}/userss-configsHomeSubs--$($cudts).tgz"  ;
+	tar --one-file-system  --exclude-caches  --exclude-tag="${q_NoBupFlagFN}"  -czpf ${bupTargetFP11} \
+	~root/.config/xfce4/ \
 	~u1/.config/xfce4/  ~u1/.config/gtk-3.0/    \
-	~m1/.config/xfce4/  ~m1/.config/gtk-3.0/ ;  \
+	~m1/.config/xfce4/  ~m1/.config/gtk-3.0/ ;   ##--?:  --show-omitted-dirs  
 	echo "==== see generated file: $bupTargetFP11" ; date;
 }
 bups1syysModFiles() {
@@ -94,8 +95,23 @@ bups1syysModFiles() {
 	export  syysAdded_files="$( find  /etc  -iname  *${q_Label1qq}* )"
 	export  syysAdded_files="${syysAdded_files}  /etc/vconsole.conf  /etc/locale.conf"    ##--  /etc/wpa_supplicant/  are all already 1q_xxx ! otherwise add it also !
 	export  syysMod_files_more="";    ##__if-needed add something here ...!
-	export  syysMod_tar_FP="${syysTgStatsConfigsDP}/${cudts11}_systemModifieds_${q_syysTg}.tgz" ;
+	export  syysMod_tar_FP="${syysTgBupsDP}/${cudts11}_systemModifieds_${q_syysTg}.tgz" ;
 	tar -cpzf  ${syysMod_tar_FP}   ${syysMod_files}  ${syysAdded_files}   ${syysMod_files_more}  ;
+	ls -lh     ${syysMod_tar_FP} ;
+}
+##-- new bups1syysModFiles2 based on explicit listing of files in $q_syysModifsListingFP (and if-req $q_Label1qq added)
+bups1syysModFiles2() {
+	##-bpping by evv modified/ceated/added/... syys files (eg in /etc , systemd, ...)!
+	##-- the files have to be listed explicitly in $q_syysModifsListingFP ONE-ABSOLUTE-FilePath per line!
+	echo; echo "---------- tar of system-mod-files listed in $q_syysModifsListingFP : -------------------------" ;
+	local  cudts11="$($cudts)";
+	local  syysMod_tar_FP="${syysTgBupsDP}/${cudts11}_systemModifieds_${q_syysTg}.tgz" ;
+	local  syysMod_files_arx1="$(pacman -Qii | grep -F "[modified]" | sed -e 's@.*: *@@;s@ \[modified\]@@;s@  *@ @')" ;
+	local  syysAdded_files="$( find  /etc  -iname  *${q_Label1qq}* )"
+	local  all_modif_FPs="$syysMod_files_arx1  $syysAdded_files  $(cat $q_syysModifsListingFP)"
+	all_modif_FPs_uniq="$(echo  $all_modif_FPs |  tr ' ' '\n'  | sort | uniq)"   ##--clear it: sort+uniq! remove duplicates!
+	#__debug:   echo $all_modif_FPs_sort |  tr ' ' '\n' 
+	tar -cpzf  ${syysMod_tar_FP}   $all_modif_FPs_uniq
 	ls -lh     ${syysMod_tar_FP} ;
 }
 ##-- both above bups1 here called by bups1syys :
@@ -109,7 +125,11 @@ bups5home() {
 	##--II-The-Sequence of the  tar-PATHES-params VERY relevant!! due to q_NoBupFlagFN !! /home  MUST be the LAST !! because in the parent-dirs of bookmarks-dir there are q_NoBupFlagFN tag-files!! so when FIRST /home, then later pathes-params will NOT be taken into tar-file!!
 	echo "===== bups5--/home : ====="; date;
 	export tarFP="${vaarAuBups1DP}/home_${q_syysTg}--$($cudts).tgz" ;      ##--prev-form--if-multi-syys-on-same-HD/host:    export tarFP="${vaarAuBups1DP}/home--$($cudts)-${q_syysTgL2}.tgz" ;
-	tar --one-file-system   --exclude-caches  --exclude-tag="${q_NoBupFlagFN}"  -cpzvf  "${tarFP}"   ~u1/.config/vivaldi/Default/Bookmarks    ~m1/.config/vivaldi/Default/Bookmarks  ~u1/.config/chromium/Default/Bookmarks	 ~m1/.config/chromium/Default/Bookmarks   /home  2>&1 1>  "${tarFP}"-tared-out.log  |tee "${tarFP}"-tared-err.log ;  date;   ##--??:  --show-omitted-dirs
+	tar --one-file-system   --exclude-caches  --exclude-tag="${q_NoBupFlagFN}"  -cpzvf  "${tarFP}" \
+		~u1/.config/vivaldi/Default/Bookmarks     ~m1/.config/vivaldi/Default/Bookmarks  \
+		~u1/.config/chromium/Default/Bookmarks	  ~m1/.config/chromium/Default/Bookmarks \
+		~u1/.config/chromium/Default/Preferences  ~m1/.config/chromium/Default/Preferences \
+		~u1/.config/vivaldi/Default/Preferences  /home  /root/  2>&1 1>  "${tarFP}"-tared-out.log  |tee "${tarFP}"-tared-err.log ;  date;   ##--??:  --show-omitted-dirs
 	[[ ! -d  "${vaarAuBups1DP}/../bupsvar_tr/"  ]] &&  mkdir  "${vaarAuBups1DP}/../bupsvar_tr/"
 	mv -i "${tarFP}"-*.log  "${vaarAuBups1DP}/../bupsvar_tr/"
 }

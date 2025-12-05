@@ -196,8 +196,8 @@ nmap <leader>zc            :set foldcolumn=
 "
 "
 " colors-modifications must be here almost at the end, after plugins/syntax-files/... to take effect! :
-hi statusline      ctermbg=yellow    ctermfg=blue   " Active-/Current-window-statusline-color in terminal! for gui use guifg/bg !
-hi statuslineNC    ctermbg=darkgray    ctermfg=blue  " Not_Active/Not_Current-windw-statusline-color
+hi statusline      ctermbg=black    ctermfg=yellow   " Active-/Current-window-statusline-color in terminal! for gui use guifg/bg !
+hi statuslineNC    ctermbg=darkgray    ctermfg=lightgreen  " Not_Active/Not_Current-windw-statusline-color
 " set highlight+=sr	  " reverse video for statusLine.   info: +=si is obsolete and now means italic!!
 " ##############################################################################################
 
@@ -207,5 +207,5 @@ set viminfo='0,<0,@0,f0,"0,/10,:10  " diable-all-inf-storings by setting to None
 " set  pythonthreehome=/c/Progs2/py3
 " set  pythonthreedll=/c/Progs2/py3/python313.dll
 " no-effect-for caching!:  let g:pymode_rope = 0
-execute pathogen#infect()
+" execute pathogen#infect()
 
