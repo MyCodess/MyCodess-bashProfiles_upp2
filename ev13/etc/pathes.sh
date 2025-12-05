@@ -146,7 +146,7 @@ syys_dnts_DP="${lxOSsdntsDP}/${q_osTg}${q_Label1dnts}"
 syys_nps_DN="${q_osTg}_nps"
 syys_wk_DP="${vaarAuWorksDP}/${q_osTg}_wk1"
 syys_dc_DP="${lxOSDocsDP}/${q_osTg}_dc/"
-##----- q_syysTg_stats_athes:
+##----- q_syysTg_stats_pathes:
 : ${q_syysTgDP:="${syysDP}/${q_syysTg}"}
 syysTgBupsDP="${q_syysTgDP}/bups"
 syysTgLogsDP="${q_syysTgDP}/logs"
@@ -156,6 +156,10 @@ syysTgStats_dntsFP="${syysTgStatsDP}/stat1_${q_syysTg}.txt"   ##--II-mainly only
 syysTgStatsLogFP="${syysTgStatsDP}/stat1_${q_syysTg}.txt.log"   ##--II-mainly only log-collects of syystg-stat by scrit!
 syysTgSetupdntsFP="${syysTgStatsDP}/setup1_${q_syysTg}${q_Label1dnts}.txt"
 syysTgTrDP="${trDP}/${q_syysTg}_tr"
+##--- syys-modified-FPs:
+q_syysModifsListingFN="${q_syysModifsListingFN:-syysModifsFPs.txt}"
+q_syysModifsListingFP="${q_syysModifsListingFP:-${syysTgStatsDP}/$q_syysModifsListingFN}"  ##--if-req can be pre-set in eg host-prof !
+q_syysModifsListingFPcomments="${q_syysModifsListingFPcomments:-${q_syysModifsListingFP}.comments}"
 
 
 ##============= MVPs: ====================================================================
