@@ -105,7 +105,9 @@ alias cdl1nwbupflags='cdlla  ${l1nwBupsLogsFlagsDP}'
 ##================= __1END__ w1-tree: ---------------------
 
 ##========== T1s/T1vars/...: ==============================
+alias cdt1var='cdlla  ${t1varDP}'
 alias cddocsvar='cdlla ${docsvarDP}'
+
 ##========== MPs/MVPs: ====================================
 alias cdmvps='cdlla  ${mvpsDP}'
 alias cdvps='cdlla  ${vpsDP}'
@@ -152,7 +154,8 @@ alias cdbashdnts='cdlla  ${bashdntsDP}'
 #--mssdnts:
 alias  cdmsdnts='cdlla ${mssdntsDP}/'
 alias  cdmsdntsshells='cdlla ${mssshellsdntsDP}/'
-
+#--gitw1repos...:
+alias  cdgtw1repos='cdlla ${gtW1LocReposRTDP}'
 ##========== rest-all : ===================================
 alias ..='cdlla  ..'
 alias a='alias'
