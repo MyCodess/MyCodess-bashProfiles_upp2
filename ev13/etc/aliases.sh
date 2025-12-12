@@ -89,6 +89,8 @@ alias gvimtit1xx='gvimtit1 -g -p  $(ls  *.txt  *.log  *.csv  *.tsv *sh *.out)'  
 alias gvimexp='gvi1  -c ":15Lexplore"'
 
 ##========== w1-/w1_m-tree: ===============================
+alias cdw1='cdlla  $w1DP'
+alias cddc1k='cdlla  $dc1kDP'
 ##---------- w1-docsm_1kk :
 alias cddevcdocs='cdlla  $devcDocsDP'
 ##---------- WPads/MEs2:
