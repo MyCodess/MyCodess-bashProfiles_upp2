@@ -86,6 +86,8 @@ IntBM2_FP="${HOME}/.config/chromium/Default/${IntBM2_FN}"  ##--Int-Bookmarks2-Fi
 ##--- loc/L1NW/evv..._1GITs :
 gtW1LocReposDN=gits_w1
 gtW1LocReposRTDP="${vaarAuWorksDP}/${gtW1LocReposDN}"
+#- aliases:
+alias  cdgtw1repos="cdlla ${gtW1LocReposRTDP}"
 
 
 ##============= w1-tree/DIRs =============================================================
