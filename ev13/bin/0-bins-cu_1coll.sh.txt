@@ -2,7 +2,10 @@ __________________  bins-coll-tr-uue.sh.txt : ________________________________
 exit 3
 
 
-#####  ==========  cu-bins/cmds/..., ?tr? or fix? /...:
+#####  ==========  cu-bins/cmds/..., ?  --> 2see/... (if often, then move to ...)::
+	nmcli conn up  Guest2Net
+	nmcli conn up  a3s-wl1
+	---
     gb1.sh   /up1/varu/varau/wks/gh1/repo1
     gb1.sh   /up1/varu/varau/wks/gh1/syncFolders1/
     ---
@@ -14,6 +17,11 @@ exit 3
     m :  cdwpadm  ; export DISPLAY=":0.0" ;  terms1col5  &  ##--  wpmterms1
 	---
 	- ! re-login into a Linux terminal without restarting xWindows (eg user added to new group, or profiles changed,...):  exec sudo --login --user $USER
+##________________________________________  ___________________________
+
+
+#####  ==========  evv-stuff...:
+	mkdir  $ostmpdir1DP  $ostmpvar1DP ; putNoBupFlag.sh $ostmpdir1DP ; putNoBupFlag.sh  $ostmpvar1DP ;
 ##________________________________________  ___________________________
 
 
