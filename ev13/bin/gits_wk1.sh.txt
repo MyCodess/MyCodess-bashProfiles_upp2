@@ -1,8 +1,19 @@
-branch11___________________ gits cmds for loc-wk: w1/evv/prj/syncs/... : _______________________________
+___________________ gits_w1 cmds for loc-repos-sync: evv/dres/prj/syncs/... : _______________________________
 
 
 
-#####  ==========  up1/w1/dres/-gits-qckys , 1coll:
+#####  ==========  cu-qkys--gits_w1 ::
+	--- correct permissions for repo-files :
+	/up1/varu/varau/wks/gits_w1 ::
+	$ find . -type d -exec chmod a+rwx {} \; # Make folders traversable and read/write
+	$ find . -type f -exec chmod a+rw {} \;  # Make files read/write
+	- ! nts:  git config --global core.filemode false   #-: works obv. ONLY for exe-bit ! see man git-config !
+	---
+    gb1.sh  /up1/varu/varau/wks/gits_w1/repo1   br1
+##________________________________________  ___________________________
+
+
+#####  ==========  gits_w1-repos-syncs/mergs/PRs (evv,up1,dres, ...)::
     cdgtw1repos   ##-- cdlla /up1/varu/varau/wks/gits_w1
 	export  branch11=2601arx_1  #-:  2512fed_1 ;
 	export TOK...

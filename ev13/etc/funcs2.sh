@@ -11,7 +11,7 @@ el1d(){  echo; echo  "${q_fold1Sm} ${1:-==========} ========== $($cudts2) : ====
 el1de(){ echo; echo  "${q_fold1Em} ${1:-==========} ${q_Tag1End} : $($cudts2) __________" ; }
 
 ##################### users-functions, allg-usages :################################
-##-- calculations :
+##--- calculations :
 bc1(){ echo "scale=${2:-5} ; $1" | bc ;}
 b2mb(){ echo "$*" | awk '{print $1 " Bytes =="; printf "%.3f KB \n%.3f MB\n%.3f GB\n", $1/1024, $1/1024/1024, $1/1024/1024/1024}' ;}   # calculating bytes to MB...
 k2mb(){ echo "$*" | nawk '{ printf "% KB \n%.3f MB\n%.3f GB\n", $1, $1/1024, $1/1024/1024}' ;}   # calculating KBytes to MB...
@@ -21,6 +21,18 @@ lls2(){ ls1 -l "$@" | nawk 'BEGIN{OFMT="%.1f"}; NF >6 {OFMT="%.1f"; printf "%15d
 #-old: more details, not formatted: lls(){ ls -l "$@" | nawk 'BEGIN{OFMT="%.1f"}; NF >6 {print $5  " B | " $5/1024 " KB | " $5/1024/1024 " MB | " $5/1024/1024/1024 " GB | "  $6 "  " $7 "  " $8 "  " $NF}' | sort -n; }
 # total size of all files, which are newer then $1 :
 sizeNewer(){ find . -newer $1 -ls | awk ' { sum_B += $7 ; print } END{ OFMT="%.2f" ; print "==== total size:  " sum_B " Bytes  ==   " sum_B / 1024 " KB  == \t " sum_B /1024  / 1024 " MB" }'; }
+
+##--- du /capacities/... calculations :
+dus11() {
+	#-I-if NO args at all, then 1) unit==bytes ,2) dir==. ,3) depth=0/sum   ##--!!-BUT for LATER args are the FORMER args mandatory!!
+	local usage11="... [unit of --block-size=xx  as in man du. default is 1/bytes  [dir, default . [--max-depth, default is 0/sum]]]" ;
+	local unit11=${1:-1} ; local dir11=${2:-.} ; local depth11=${3:-0}
+	du  -x --block-size=${unit11}  ${dir11}/*  --max-depth=${depth11}  | sort -n ;
+	du  -x --block-size=${unit11}  ${dir11} -s ;  ##--as default du does NOT print the sum of the root-dir! so here the additional du cmd!
+}
+dusk() { dus11  1K $1 $2 ; }
+dusm() { dus11  1M $1 $2 ; }
+dusg() { dus11  1G $1 $2 ; }
 
 ##--- cdlla-funcs:
 cdll()    { cd  "$*"  && ll    && pwd ; }
@@ -104,12 +116,12 @@ dtFPgen()  {  ##--Date-Timed-FilePath-Generation for all timestamped mv/cp/... :
 	retval11="" ; cleanFP1 "${fn11}" ; fn11="${retval11}" ;
 	retval11="" ; cleanFP1 "${dp11}" ; dp11="${retval11}" ;
 	##__  echo $fn11 ; echo $sourceDP11 ; echo $dp11 ; echo "_______________" ;
-	newfn11_d="${cuds11}--${fn11}${addies11}"    ;  
-	newfn11_de="${fn11}--${cuds11}${addies11}"   ;   
-	newfn11_dt="${cudts11}--${fn11}${addies11}"  ;  
-	newfn11_dte="${fn11}--${cudts11}${addies11}" ;
-	newfn11_mod_de="${fn11}--${cuds11_mod_srcFP}${addies11}" ;
-	newfn11_mod_dte="${fn11}--${cudts11_mod_srcFP}${addies11}" ;
+	newfn11_d="${cuds11}${q_tstampSep1}${fn11}${addies11}"    ;  
+	newfn11_de="${fn11}${q_tstampSep1}${cuds11}${addies11}"   ;   
+	newfn11_dt="${cudts11}${q_tstampSep1}${fn11}${addies11}"  ;  
+	newfn11_dte="${fn11}${q_tstampSep1}${cudts11}${addies11}" ;
+	newfn11_mod_de="${fn11}${q_tstampSep1}${cuds11_mod_srcFP}${addies11}" ;
+	newfn11_mod_dte="${fn11}${q_tstampSep1}${cudts11_mod_srcFP}${addies11}" ;
 	##__  echo $newfn11_d ; echo $newfn11_dt ; echo $newfn11_de ; echo $newfn11_dte ; echo "_______________" ;
 	##-- not-needed-anymore for this new call with 3 params! :  newdp11="${dp11}/${subDN11}" ; 
 	##__ removing redundant "/"  is done now in cleanFP1 ! old:  newdp11=$(echo $newdp11 |  tr -s   "/") ;     ##--sed-variation:   sed -e 's@//*@/@g'

@@ -116,7 +116,14 @@ bups1syysModFiles2() {
 }
 ##-- both above bups1 here called by bups1syys :
 bups1syys() { echo "===== bups1--${syysDP} : ====="; bups1configsUsers ; bups1syysModFiles ; "${q_BinDP}/syysTgStat.sh"  >> $syysTgStatsLogFP  2>&1 ; rsync  -v  -rtlHOx --modify-window=5  --delete    ${syysDP}  ${vaarAuBups1DP}/  ; }
-bups1mesp() { src11_FP="$(realpath  ${mespRFFP})";   to11_FP="${vaarAuBups1DP}/${src11_FP##*/}--$($cudts)" ; echo "===== bups1--${src11_FP} : ====="; date;  cd  ${vaarAuBups1DP}/  &&  cp -v -p -L  "${src11_FP}"  "${to11_FP}" ; date; }
+bups1mesp() {
+	if [ -a  "$mespRFFP" ]; then
+		src11_FP="$(realpath  ${mespRFFP})";   to11_FP="${vaarAuBups1DP}/${src11_FP##*/}--$($cudts)" ;
+		echo "===== bups1--${src11_FP} : ====="; 
+		date;  cd  ${vaarAuBups1DP}/  &&  cp -v -p -L  "${src11_FP}"  "${to11_FP}" ; date;
+	else echo "$q_warnTag :: NOT_backuped ! file does NOT exist:  $mespRFFP";
+	fi
+}
 bups3mespAR() { src11_FP="$(realpath  ${mespARFP})"; to11_FP="${vaarAuBups1DP}/${src11_FP##*/}--$($cudts)" ; echo "===== bups3--${src11_FP} : ====="; date;  cd  ${vaarAuBups1DP}/  &&  cp -v -p -L  "${src11_FP}"  "${to11_FP}" ; date; }
 ##--bups3-All:
 bups3etc()  { echo "===== bups3--/etc : ====="; date;  cd  ${vaarAuBups1DP}/  &&  tar --one-file-system  -cpzf  "${vaarAuBups1DP}/etc_${q_syysTg}--$($cudts)"   /etc  ; date; }

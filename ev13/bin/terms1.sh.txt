@@ -1,9 +1,17 @@
 #!/bin/bash -i
 exit 3 ;
 echo "$fatalErrorTag  :  Must-Not have reached here!!! "  ; exit 3 ;
+
+
 ############# cu-wks/dos/... : ##############################################
-##----- cu-qcky-terms:
-export fmsWP_DP="${wpDP}/fms-wp" ;  xfce4-terminal  --tab --working-directory=${tosoDP}  --tab --working-directory=${fmsWP_DP}  --tab  --working-directory=${fmsWP_DP}/FMs_2205_1kk  --tab --working-directory=${fmsWP_DP}/FMs2_2205_no1kk_Anil  --tab --working-directory=${fmsWP_DP}/Samples_1p_1coll_tr
+##----- cu-qcky-terms1 ::
+--- terms1:
+rt:  cdvarau  ; export DISPLAY=":0.0" ;  dbus-run-session -- xfce4-terminal --disable-server --tab --tab --tab --tab &  ##--alias terms1 NOT working!
+m :  cdwpadm  ; export DISPLAY=":0.0" ;  dbus-run-session -- xfce4-terminal --disable-server --tab --tab --tab --tab &  ##--alias terms1 NOT working!
+rt:  cdvarau  ; export DISPLAY=":0.0" ;  terms1col3  &  ##--  terms1
+m :  cdwpadm  ; export DISPLAY=":0.0" ;  terms1col5  &  ##--  wpmterms1
+--- more:
+- FMs-terms1:   export fmsWP_DP="${wpDP}/fms-wp" ;  xfce4-terminal  --tab --working-directory=${tosoDP}  --tab --working-directory=${fmsWP_DP}  --tab  --working-directory=${fmsWP_DP}/FMs_2205_1kk  --tab --working-directory=${fmsWP_DP}/FMs2_2205_no1kk_Anil  --tab --working-directory=${fmsWP_DP}/Samples_1p_1coll_tr
 ##________________________________________  ___________________________
 
 
@@ -51,7 +59,7 @@ exit 0
 ##________________________________________  ___________________________
 
 
-#####  ==========  1kk/uue more:
+#####  ==========  1kk/evv more:
 ##---DUs: (!! "--profile=xxx" works ONLY per TAB !! so if want all tabs in profileXX then enter this per TAB parameter !!)
 gnome-terminal  -t DUs    --tab --working-directory=${wpDP_du}  --profile=$uueTN_ub  --tab --working-directory=${wpmDP_du}   --tab --working-directory=${absDP_du}  --tab  --working-directory=${absDP_du}/abs-du-2010/ --tab --working-directory=/up1/w1_AR/DU_cu/  --tab --working-directory=${wpDP} --profile=$uueTN_ub
 ##---MPs-Work, new MPs-1901 , ...:

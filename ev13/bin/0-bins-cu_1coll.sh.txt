@@ -2,74 +2,25 @@ __________________  bins-coll-tr-uue.sh.txt : ________________________________
 exit 3
 
 
-#####  ==========  cu-bins/cmds/..., ?  --> 2see/... (if often, then move to ...)::
-	---
-	- mount NTFS   T2FS_P  :  mount /dev/sdc1  /mnt/t1 -o uid=u1,gid=gu1,dmask=000,fmask=111,nls=utf8,utf8,noatime,windows_names
-	- mount exFat  T2FS_P  :  mount /dev/sdb4  /mnt/s1  -o rw,nosuid,nodev,noexec,noatime,uid=1501,gid=1500,fmask=0113,dmask=0002,allow_utime=0020,iocharset=utf
-	---
-	nmcli conn up  Guest2Net
-	nmcli conn up  a3s-wl1
-	---
-    gb1.sh   /up1/varu/varau/wks/gh1/repo1
-    gb1.sh   /up1/varu/varau/wks/gh1/syncFolders1/
-    ---
-    chromium   --incognito  > /dev/null 2>&1   &
-    --- terms1:
-    rt:  cdvarau  ; export DISPLAY=":0.0" ;  dbus-run-session -- xfce4-terminal --disable-server --tab --tab --tab --tab &  ##--alias terms1 NOT working!
-    m :  cdwpadm  ; export DISPLAY=":0.0" ;  dbus-run-session -- xfce4-terminal --disable-server --tab --tab --tab --tab &  ##--alias terms1 NOT working!
-    rt:  cdvarau  ; export DISPLAY=":0.0" ;  terms1col3  &  ##--  terms1
-    m :  cdwpadm  ; export DISPLAY=":0.0" ;  terms1col5  &  ##--  wpmterms1
-	---
-	- ! re-login into a Linux terminal without restarting xWindows (eg user added to new group, or profiles changed,...):  exec sudo --login --user $USER
-##________________________________________  ___________________________
-
-
-#####  ==========  evv-stuff...:
+_______:  evv-stuff...:
 	mkdir  $ostmpdir1DP  $ostmpvar1DP ; putNoBupFlag.sh $ostmpdir1DP ; putNoBupFlag.sh  $ostmpvar1DP ;
-##________________________________________  ___________________________
 
+_______:  Devels/...:
 
-#####  ==========  Devels/...:
-    gb1.sh   /up1/varu/varau/wks/gh1/repo1
-    gb1.sh   /up1/varu/varau/wks/gh1/syncFolders1/
-##________________________________________  ___________________________
-
-#####  ==========  sed/replacements/...:
-
+_______:  sed/replacements/...:
     - w1-RootDIRs-capitalization-ranamings:   sed  -i.dcW1  -e 's@dc1k@dc1K@g'  -e 's@dcAl@dcAL@g'   -e 's@dcIt@dcIT@g'   pathes.sh 
-##________________________________________  ___________________________
 
-#####  ==========  xfce4
-
-	_______:  m1/t1-launches:
+_______:  xfce4 / xwins,...:
+	- writing to clipboard / xfce4-clipman  :  echo xx11 | xclip -i  --selection clipboard
+	---  m1/t1-apps-launches in u1-xwin:
     dbus-launch    --exit-with-session    xfce4-settings-manager
     dbus-launch    --exit-with-session    thunar
-##________________________________________  ___________________________
+	---
+	- ! re-login into a Linux terminal without restarting xWindows (eg user added to new group, or profiles changed,...):  exec sudo --login --user $USER
+	---
+	- gnome-terminal problem as another-user /:190413 ubt-18 (must set DISPLAY for dbus! eg DISPLAY=:0 )! 
+    dbus-update-activation-environment --verbose --systemd DISPLAY   ##-/OR?:  dbus-update-activation-environment  DISPLAY=:0
 
-
-#####  ==========  gnome-terminal problem as another-user /:190413 ubt-18.04.2 :
-
-	_______:  must set DISPLAY for dbus (eg DISPLAY=:0 )! 
-    dbus-update-activation-environment --verbose --systemd DISPLAY
-    /OR?:  dbus-update-activation-environment  DISPLAY=:0
-##________________________________________  ___________________________
-
-
-#####  ==========  finds in /up1/ ,...:
-
-    - BKs-IT-find:
-    find  /up1/w/BKs1_RF/BKs1_ITs/  /up1/w2/BKs2_RF/BKs2_ITs/  -iname "*ant*"
-    - BKs-All-find:
-    find  /up1/w/BKs1_RF/  /up1/t2/w2_loc_RF/BKs2_RF/  -iname "*xxx*"
-##________________________________________  ___________________________
-
-
-#####  ==========  PRJs:
-    - devnts/X_wp files:   mkdircd  /0devNts/javas/j_wp ; ls /up1/w/docs_m/dres/0devNts/pl/pl_wp | sed -e 's/pl_/j_/g' | xargs touch 
-##________________________________________  ___________________________
-
-
-#####  ==========  file-types ...:
+_______:  file-types ...:
     - is the file a text/plain one??:      [[  "text/plain" != $(file -b --mime-type $1 ) ]]  && echo "$1  :  __NO_Plain_TXT__ " ;
-##________________________________________  ___________________________
 

@@ -8,6 +8,9 @@ q_versionID=2209	                   # version/releas-number/ID of the whole pack
 declare -xi q_EvvNO=${q_EvvNO:-${q_EvvDPPhys: -2}} ;   #curr env-ID resp. dir-suff-ID, last two digits of root-dir-name are the curr-env-identifier too!
 
 
+##=========== global-const-literals (independent of any FN/FP/Paths/... ! just const-literals)
+q_tstampSep1='--'   #--date-/time-stamp-seperatos (before or after data-/time-stamps can be added!
+
 ##========== syys-Tags/OS-tags for syys-dirs/L1NW-PCs,... =========================================================
 ##--- below only "formal"-syys-values and their dafult-puts-togethers! the right/finale ones in  $q_HostGlobProfFP ! system-dependent/canging/varying-vars of syys are defined in the $q_HostGlobProfFP !
 : ${q_osRelTg:=NNN}   #- OS-longname: distro.ver.arch
@@ -103,12 +106,15 @@ q_Label0Cats1DV="_DV"    ##--Devel-Env, Entwicklung-Env
 ###--- FNs-tags1Addies_1kk-labels1 , also in_1kk_nts-tags-addies ALL,  _1xxx : ---------
 q_Label1arc="_1arc"
 q_Label1aw="_1AW"
+q_Label1b4="_1b4"        ##--base64 --wrap=0
 q_Label1coll="_1coll"
 q_Label1cu="_1cu"
 q_Label1dnts="_dnts"
 q_Label1dres="_dres"
 q_Label1dres1kk="_dres_1kk"
 q_Label1dvvl1="dvl1"      ##--devels1/IT-develops1/
+q_Label1gp='_1gp'
+q_Label1gp1b4="_1gp${q_Label1b4}"   ##-- | gp -c | base64 --wrap=0
 q_Label1kk="_1kk"
 q_Label1skk="_1skk"
 q_Label1misc="_1misc"

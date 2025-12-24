@@ -3,9 +3,9 @@ set -u
 set -C  #noclobber
 
 date11=$($cuds)
-targetDP="$homiesBupsRestDP"      ##-- "${ProgsResW1DP}/HomiesBups_BMs_1kk/${date11}-${USER}-homesy"  ;
+targetDP="${homiesBupsRestDP}/${date11}${q_tstampSep1}${USER}-${q_syysTg}-homesy"  ;
 [[ ! -d ${targetDP} ]] && ( mkdir -v  ${targetDP} || exit 3 )  ; ##--I- extra keine -p ! its root must already exist, otherwise exit!!
-cd ${targetDP} || exit 3
+cd ${targetDP} && pwd || exit 3
 
 cp  -iv  --parents  --preserve=timestamp  ${filesBM1_FP}  ${IntBM1_FP}  ${IntBM2_FP}  ./
 cp  -iv  --parents  --preserve=timestamp  ~/.config/vivaldi/Default/Preferences   ./

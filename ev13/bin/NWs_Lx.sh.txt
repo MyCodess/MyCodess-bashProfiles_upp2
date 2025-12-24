@@ -2,7 +2,31 @@ _______________________  NWs-cmds-coll-Adms .... : _____________________________
 -!! here only cmd-coll-qcks-handys1 for more dvntc see Lx/Arx-dnts !!
 -! for nmcli / NetworkManager see arx1-syysdnts  in NWs-dnts ! here ONLY qkys !
 
+
 #####  ==========  qcks-systemD-bin-NWs:
+_______:  NWs/nmcli ::
+	nmcli conn up  Guest2Net
+	nmcli conn up  a3s-wl1
+	---
+	systemctl  restart  NetworkManager
+	systemctl  stop     NetworkManager
+	systemctl  status   NetworkManager	
+	vi  /etc/NetworkManager/system-connections/xxx.conf  +  Do not forget to reload the configuration file with:   nmcli connection reload
+    ---
+    - google-DNS-devs:   ping  8.8.8.8 / 8.8.4.4   #-IP6:  2001:4860:4860::8888 / 2001:4860:4860::8844
+##________________________________________  ___________________________
+
+
+#####  ==========  HWs_NWs-infs / NW-module-/driver-NWs reload/restart:
+	- find your wireless driver , and then reload its module/driver :
+	sudo lshw -C network    ##and see for wireless-interface:  driver=iwl4965     ##-- lshw - list hardware
+	/OR  sudo  lspci -knn   ##--  | grep -i network  -A3  ; /OR  grep -i eterneth  -A3 
+	reload its module/driver (by x13-wireless:  iwl4965) :    sudo modprobe -r  iwl4965  &&   sudo modprobe -i  iwl4965
+	- modules/drives are in  /lib/modules/`uname -r`/kernel/net/wireless/....   eg in x13-ubt-18.04:  /lib/modules/4.15.0-46-generic/kernel/drivers/net/wireless/intel/iwlegacy/iwl4965.ko
+##________________________________________  ___________________________
+
+
+#####  ==========  wpa_supplicant cmds/coll/qcks :
 	- !! stop ... with several services does NOT work! einzelne!
 	---
 	all-stat:   systemctl   status   dhcpcd.service  wpa_supplicant.service  NetworkManager
@@ -12,23 +36,6 @@ _______________________  NWs-cmds-coll-Adms .... : _____________________________
 	systemctl   stop     wpa_supplicant.service ; systemctl   stop   dhcpcd.service ;
 	vi  /etc/wpa_supplicant/1q_xxx
 	vi  /etc/systemd/system/wpa_supplicant.service.d/...
-	---
-	systemctl  restart  NetworkManager
-	systemctl  stop     NetworkManager
-	systemctl  status   NetworkManager	
-	vi  /etc/NetworkManager/system-connections/xxx.conf  +  Do not forget to reload the configuration file with:   nmcli connection reload
-	---
-	systemctl  restart systemd-resolved.service   systemd-networkd.service  systemd-networkd.socket  wpa_supplicant.service
-	systemctl   stop   dhcpcd.service
-    ---
-    - google-DNS-devs:   ping  8.8.8.8 / 8.8.4.4   #-IP6:  2001:4860:4860::8888 / 2001:4860:4860::8844
-##________________________________________  ___________________________
-
-
-##________________________________________  ___________________________
-
-
-#####  ==========  wpa_supplicant cmds/coll/qcks :
 	--- cmds-qcks..wpa_supplicant ...:
 	 - non-hidden-APs, in a root-shell (not-sudo, due to subprossess in cmdline):   wpa_supplicant  -B  -i  wlan0  -c <(wpa_passphrase "bibliothek1-AP" "06.01.2020cC")  ##--OR ohne -B to run in forground !
 	 - hidden-AccessPoints:  you need a config file, due to adding  scan_ssid=1  to it :
@@ -42,15 +49,6 @@ _______________________  NWs-cmds-coll-Adms .... : _____________________________
 	vimdiff   /up1/media/syys5/etc/wpa_supplicant/wpa_supplicant-wlan0.conf    /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 	vimdiff   /etc/wpa_supplicant/wpa_supplicant-wlan0.conf     /up1/.cuue/etc/syys-uue/00-allsyys/wpa_supplicant-wlan0.conf
 	lla  /etc/wpa_supplicant/wpa_supplicant-wlan0.conf   /up1/.cuue/etc/syys-uue/00-allsyys/wpa_supplicant-wlan0.conf   /up1/media/syys5/etc/wpa_supplicant/wpa_supplicant-wlan0.conf
-##________________________________________  ___________________________
-
-
-#####  ==========  HWs_NWs-infs / NW-module-/driver-NWs reload/restart:
-	- find your wireless driver , and then reload its module/driver :
-	sudo lshw -C network    ##and see for wireless-interface:  driver=iwl4965     ##-- lshw - list hardware
-	/OR  sudo  lspci -knn   ##--  | grep -i network  -A3  ; /OR  grep -i eterneth  -A3 
-	reload its module/driver (by x13-wireless:  iwl4965) :    sudo modprobe -r  iwl4965  &&   sudo modprobe -i  iwl4965
-	- modules/drives are in  /lib/modules/`uname -r`/kernel/net/wireless/....   eg in x13-ubt-18.04:  /lib/modules/4.15.0-46-generic/kernel/drivers/net/wireless/intel/iwlegacy/iwl4965.ko
 ##________________________________________  ___________________________
 
 
@@ -76,5 +74,10 @@ _______________________  NWs-cmds-coll-Adms .... : _____________________________
     - smbclient -L  192.168.43.15  --user=u1
     - mount -t cifs  //192.168.43.15/t1_Lv13   /mnt/t1  -o  username=u1,iocharset=utf8,uid=u1,gid=gu1  ##--file_mode/dir_mode/masks have kaum effekt ...! see man !
     - rsync ... --no-perm  --no-own ...; eg:  rsync -n -avO  --no-perms [-u]  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
+##________________________________________  ___________________________
+
+
+#####  ==========  systemD-based-NW-services ::
+	systemctl  restart systemd-resolved.service   systemd-networkd.service  systemd-networkd.socket  wpa_supplicant.service
 ##________________________________________  ___________________________
 

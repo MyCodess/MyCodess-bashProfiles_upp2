@@ -6,5 +6,5 @@
 ##--	check: find /home \( -iname "*trash*" -o -iname "*cach*" -o -iname "tmp" \) -a -type d -ls ; /OR  findin . ${q_NoBupFlagFN}   -ls  ;
 set -u
 targetDir1=${1:?"USAGE: ... <target-dir to be excluded from tar.>"} ;
-cp -v $q_NobupFlagTplFP  ${targetDir1}/${q_NoBupFlagFN}  &&  chown -v --reference="${targetDir1}"  "${targetDir1}/${q_NoBupFlagFN}";
+cp -v $q_NobupFlagTplFP  "${targetDir1}/${q_NoBupFlagFN}"  &&  chown -v --reference="${targetDir1}"  "${targetDir1}/${q_NoBupFlagFN}";
 

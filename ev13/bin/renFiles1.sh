@@ -8,7 +8,6 @@
 ##-if-wanted-parameterizing with search-and-replacement-strings-without-sed/..., then:  searchStr1="$2" ; replaceStr1="$3" ; ##...
 
 fn1="${1:?USAGE: $0 <filename> [serchWord] [replacement]}" ;
-##__  echo  
 
 exit 0
 
@@ -19,7 +18,13 @@ exit 0
 ##__ evv-std-renaming:   find .  -depth  -regextype posix-extended   -regex  ".*[^[:alnum:]/_.-].*"  -exec renFiles1.sh {} \;  ##--then-uncomment-this-renaming:   mv -inv "$fn1" "$( echo "$fn1" | sed  -e 's@[^[:alnum:]/_.-]@-@g' )"
 #
 ##__  ========== 1cu.misc : 
-##__ echo mv  -inv  "$fn1"  "${fn1//50Hz/5Hz}"
+##--- dateTimeStamp-convertings : but maybe in this case better with sed , due to exact counter of digits !? --------
+##--- echo  mv -iv "$fn1" "$(echo $fn1 | sed -e 's@^[[:digit:]]\{6\}-@&-@')"
+##__ echo $fn1 | sed -e 's@^[[:digit:]]\{6\}-@&-@'
+##__ 1OK-done:  echo  mv  -inv  "$fn1"  "${fn1/#[[:digit:]][[:digit:]][[:digit:]][[:digit:]][[:digit:]][[:digit:]]-/&-}"   ##-- prev 'dateTimeStamp-' to new 'dateTimeStamp--'  in FNs STARTING with nnnnn-xxx.yy
+##__ OK-but not exact 6 digits yet here :  echo mv  -inv  "$fn1"  "${fn1/[[:digit:]]-/&---}" ; #-ok-on-cmdline but not here!?:  #echo mv  -inv  "$fn1"  "${fn1/#+([[:digit:]])-/&---}"
+##_______________________________________
+##__ echo  mv  -inv  "$fn1"  "${fn1//50Hz/5Hz}"
 ##__ echo  mv  -inv  "$fn1"  "${fn1//.txt/.md}"
 ##__ echo  mv  -inv  "$fn1"  "${fn1//rates/StdSatz}"
 ##__ echo  mv -inv "$fn1"     "${fn1//_1coll_dres/_dres}"

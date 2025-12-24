@@ -165,9 +165,9 @@ alias cptafat='cp -ix -a --no-preserve=ownership'   ##-for FATs, or if uid/gid i
 alias cptr='cp -ix   -Rd --preserve=timestamp'     ##-as -a but only timestamp relevant, rest egal! eg for FATs and more ...
 alias cpt='cp  -ixv  -d --preserve=timestamp'      ##-only time relevant
 alias df.='df -h .'
-alias dusk='du -x -sk * | sort -n ; du -x -sk  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sk * .[[:alnum:]]* | sort -n'
-alias dusm='du -x -sm * | sort -n ; du -x -sm  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sm * .[[:alnum:]]* | sort -n'
-alias dusg='du -x -s --block-size=1G  * | sort -n ; du -x -s --block-size=1G .'  #-i- if shell-glob-option not set fo ..-dirs: 'du -sm * .[[:alnum:]]* | sort -n'
+##__  alias dusk='du -x -sk * | sort -n ; du -x -sk  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sk * .[[:alnum:]]* | sort -n'
+##__  alias dusm='du -x -sm * | sort -n ; du -x -sm  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sm * .[[:alnum:]]* | sort -n'
+##__  alias dusg='du -x -s --block-size=1G  * | sort -n ; du -x -s --block-size=1G .'  #-i- if shell-glob-option not set fo ..-dirs: 'du -sm * .[[:alnum:]]* | sort -n'
 alias ep='echo $PATH'
 alias eplines='echo -e ${PATH//:/"\n"}'             ##--PATH as lines
 ##__ alias epl='echo $PATH | tr ':' "[\n]" | sort '    ##- PATH as lines if "echo -e" not working...
