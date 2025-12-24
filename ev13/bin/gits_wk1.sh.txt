@@ -5,11 +5,12 @@ branch11___________________ gits cmds for loc-wk: w1/evv/prj/syncs/... : _______
 #####  ==========  up1/w1/dres/-gits-qckys , 1coll:
     cdgtw1repos   ##-- cdlla /up1/varu/varau/wks/gits_w1
 	export  branch11=2601arx_1  #-:  2512fed_1 ;
+	export TOK...
 
 _______:  evv:
 	cd ${gtW1LocReposRTDP}/evv_gt ; setgitprompt1 ; git switch  $branch11  ; git pull;
 	diff -rq ./ev13/  /up1/.ev13/ ; rsync -av --delete [ -n -c -O ] /up1/.ev13/   ./ev13/ ;
-	git add .; git commit -am "synced-with-OS $branch11" ;
+	git add .; git commit -am "synced-with-OS $branch11" ; git status ;
 	gb1.sh  . $branch11 ;
 
 	--- prev: evv1 / up1:
