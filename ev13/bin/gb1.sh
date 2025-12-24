@@ -41,6 +41,12 @@ echo; echo "_______pull-request-handling: _________________";
 gh  pr  create  --title  "PR1-${locBr11}--$($cudts2)"  --body "PR-from-${locBr11}-into-main--$($cudts2)"
 gh  pr  merge -m ${locBr11}
 
+echo; echo "_______pull main again after PR merged: _______";
+git switch main
+git pull
+git  switch ${locBr11}
+
+
 ##__  $pauseCmd1
 ##__  echo  "----------- if like: create+delete repoXX : -----------------------"
 ##__  expg  GH_TOK
