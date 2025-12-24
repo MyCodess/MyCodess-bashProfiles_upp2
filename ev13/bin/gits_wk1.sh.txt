@@ -4,11 +4,12 @@ ___________________ gits cmds for loc-wk: w1/evv/prj/syncs/... : _______________
 
 #####  ==========  up1/w1/dres/-gits-qckys , 1coll:
     cdgtw1repos   ##-- cdlla /up1/varu/varau/wks/gits_w1
+	export  branch11=2601arx_1  #-:  2512fed_1 ;
 
 _______:  evv:
 	cd ${gtW1LocReposDN}/evv_gt ; git switch  2601arx_1 ; git pull;
 	diff -rq ./ev13/  /up1/.ev13/ ; rsync -av --delete [ -n -c -O ] /up1/.ev13/   ./ev13/ ;
-	gb1.sh  . 2601arx_1 ;
+	gb1.sh  . $branch11 ;
 
 	--- prev: evv1 / up1:
     rm -rf /up1/mnt/VARUfs/varu/varau/wks/gits_w1/up1_git/ev13/ ; cp -a  /up1/.ev13/  /up1/mnt/VARUfs/varu/varau/wks/gits_w1/up1_git/ev13/  ##-/OR:
@@ -17,7 +18,12 @@ _______:  evv:
     cdgtw1repos ; cdlla up1_git/ ;
     expg TOK ; git status; [git add  . ] ; git commit -a -m "bins-added ; git push ;
     
-    --- dres:
+_______:  dres:
+	cd ${gtW1LocReposDN}/dres_gt ; git switch  2601arx_1 ; git pull;
+	diff -rq /up1/w1/dc1K/dres/  ./dres/ ; rsync -av --delete  -n -O -c  /up1/w1/dc1K/dres/  ./dres/
+	gb1.sh  . $branch11 ;
+
+	--- prev: dres:
     rm -rf /up1/mnt/VARUfs/varu/varau/wks/gits_w1/dres_git/dres/
     cp -a  /up1/w1/dc1K/dres/  /up1/mnt/VARUfs/varu/varau/wks/gits_w1/dres_git/dres/
     #-/OR:  rsyn -n -av --delete  /up1/w1/dc1K/dres/  /up1/mnt/VARUfs/varu/varau/wks/gits_w1/dres_git/dres/  ##--/OR just rm + cp -a
