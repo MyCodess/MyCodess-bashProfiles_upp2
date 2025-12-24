@@ -10,7 +10,7 @@ set  -o  errexit  ##== set -e
 cd  ${vaarAuBups1DP}  || { echo "$q_fatalErrorTag  prereq:  mount-the-bups1-source: ${vaarAuBups1DP} " ; exit 5 ; }
 
 echo ; echo  "--------------------" ; 
-bups1up1
+bups1upp
 echo ; echo  "--------------------" ; 
 bups1syys    ##--calls:  bups1syysModFiles() and bups1configsUsers() !
 echo ; echo  "--------------------" ; 
@@ -18,7 +18,8 @@ bups3etc
 echo ; echo  "--------------------" ; 
 bups5home
 echo ; echo  "--------------------" ; 
-##--ReDo:--now-two-NB!   bups1mesp
+##--2do----now-two-NB!   
+bups1mesp
 ##---
 el1e
 ls  -l -Ah  *[-_.]$(date +%y%m)[0-9][0-9]*

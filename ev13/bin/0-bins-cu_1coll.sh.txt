@@ -3,6 +3,10 @@ exit 3
 
 
 #####  ==========  cu-bins/cmds/..., ?  --> 2see/... (if often, then move to ...)::
+	---
+	- mount NTFS   T2FS_P  :  mount /dev/sdc1  /mnt/t1 -o uid=u1,gid=gu1,dmask=000,fmask=111,nls=utf8,utf8,noatime,windows_names
+	- mount exFat  T2FS_P  :  mount /dev/sdb4  /mnt/s1  -o rw,nosuid,nodev,noexec,noatime,uid=1501,gid=1500,fmask=0113,dmask=0002,allow_utime=0020,iocharset=utf
+	---
 	nmcli conn up  Guest2Net
 	nmcli conn up  a3s-wl1
 	---
