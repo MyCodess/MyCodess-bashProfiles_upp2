@@ -5,7 +5,12 @@ ___________________ gits cmds for loc-wk: w1/evv/prj/syncs/... : _______________
 #####  ==========  up1/w1/dres/-gits-qckys , 1coll:
     cdgtw1repos   ##-- cdlla /up1/varu/varau/wks/gits_w1
 
-    --- evv1 / up1:
+_______:  evv:
+	cd ${gtW1LocReposDN}/evv_gt ; git switch  2601arx_1 ; git pull;
+	diff -rq ./ev13/  /up1/.ev13/ ; rsync -av --delete [ -n -c -O ] /up1/.ev13/   ./ev13/ ;
+	gb1.sh  . 2601arx_1 ;
+
+	--- prev: evv1 / up1:
     rm -rf /up1/mnt/VARUfs/varu/varau/wks/gits_w1/up1_git/ev13/ ; cp -a  /up1/.ev13/  /up1/mnt/VARUfs/varu/varau/wks/gits_w1/up1_git/ev13/  ##-/OR:
     #-/OR:  rsync  -n  -avO  --delete   /up1/.ev13/  /up1/mnt/VARUfs/varu/varau/wks/gits_w1/up1_git/ev13/
     #-/OR:  rsync  -n  -v  -rtlHO  --modify-window=5  --delete   /up1/.ev13/  /up1/mnt/VARUfs/varu/varau/wks/gits_w1/up1_git/ev13/
