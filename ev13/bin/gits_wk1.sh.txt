@@ -20,7 +20,7 @@ ___________________ gits_w1 cmds for loc-repos-sync: evv/dres/prj/syncs/... : __
 
 _______:  evv:
 	cd ${gtW1LocReposRTDP}/evv_gt ; setgitprompt1 ; git switch  $branch11  ; git pull;
-	diff -rq ./ev13/  /up1/.ev13/ ; rsync -av --delete [ -n -c -O ] /up1/.ev13/   ./ev13/ ;
+	diff -rq ./ev13/  /up1/.ev13/ ; rsync -av --delete [ -n -c -O --no-perms ] /up1/.ev13/   ./ev13/ ;
 	git add .; git commit -am "synced-with-OS $branch11" ; git status ;
 	gb1.sh  . $branch11 ;
 
@@ -33,7 +33,7 @@ _______:  evv:
     
 _______:  dres:
 	cd ${gtW1LocReposRTDP}/evv_gt ; setgitprompt1 ; git switch  $branch11  ; git pull;
-	diff -rq /up1/w1/dc1K/dres/  ./dres/ ; rsync -av --delete  -n -O -c  /up1/w1/dc1K/dres/  ./dres/
+	diff -rq /up1/w1/dc1K/dres/  ./dres/ ; rsync -av --delete  -n -O -c  --no-perms  /up1/w1/dc1K/dres/  ./dres/
 	git add .; git commit -am "synced-with-OS $branch11" ;
 	gb1.sh  . $branch11 ;
 

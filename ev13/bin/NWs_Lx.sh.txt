@@ -73,7 +73,7 @@ _______:  NWs/nmcli ::
     - if connection-problems, then try disabling mswin-firewall on that NW-connection !?
     - smbclient -L  192.168.43.15  --user=u1
     - mount -t cifs  //192.168.43.15/t1_Lv13   /mnt/t1  -o  username=u1,iocharset=utf8,uid=u1,gid=gu1  ##--file_mode/dir_mode/masks have kaum effekt ...! see man !
-    - rsync ... --no-perm  --no-own ...; eg:  rsync -n -avO  --no-perms [-u]  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
+    - rsync ... --no-perms  --no-own ...; eg:  rsync -n -avO  --no-perms [-u]  /up1/t1/w1_RF/dc1K/  /mnt/t1/w1_RF/dc1K/
 ##________________________________________  ___________________________
 
 
