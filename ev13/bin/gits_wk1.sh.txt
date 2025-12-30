@@ -17,11 +17,14 @@ ___________________ gits_w1 cmds for loc-repos-sync: evv/dres/prj/syncs/... : __
     cdgtw1repos   ##-- cdlla /up1/varu/varau/wks/gits_w1
 	export  branch11=2601arx_1  #-:  2512fed_1 ;
 	export TOK...
+	-!! VOCABs:  our-loc-evv /up1/.ev13/  <--> locBr (2512fed_1)  <--> others (in synced/meged main-Br or directly in others-locBr)
 
 _______:  evv:
-	cd ${gtW1LocReposRTDP}/evv_gt ; setgitprompt1 ; git switch  $branch11  ; git pull;
-	diff -rq ./ev13/  /up1/.ev13/ ; rsync -av --delete [ -n -c -O --no-perms ] /up1/.ev13/   ./ev13/ ;
-	git add .; git commit -am "synced-with-OS $branch11" ; git status ;
+	- pull others from main into our locBr:   cd ${gtW1LocReposRTDP}/evv_gt ; setgitprompt1 ; git switch  $branch11  ; git pull;
+	- check diff merged-locBr with our-loc-evv:   diff -rq ./ev13/  /up1/.ev13/ ; 
+	- sync/merge others into our-loc-evv /up1/.ev13/ :  rsync  -n -c -O --no-perms -av -u  ./ev13/  /up1/.ev13/        ;  ##--chk manually + merge what-wanted!
+	- sync/merge our-loc-evv to locBr:                  rsync  -n -c -O --no-perms -av --delete  /up1/.ev13/  ./ev13/  ;
+	- git add .; git commit -am "synced-with-OS $branch11" ; git status ;
 	gb1.sh  . $branch11 ;
 
 	--- prev: evv1 / up1:

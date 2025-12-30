@@ -130,6 +130,8 @@ q_Label1rz="_1RZ"
 q_Label1sammel="_1sammel"
 q_Label1scan="_1scan"
 q_Label1sig="_1sig"
+q_Label1var="var"
+q_Label1wk="_wk"
 
 #--- Flag-FNs
 syncFlagFN=0syc.flg.txt

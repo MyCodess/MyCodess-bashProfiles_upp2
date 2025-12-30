@@ -1,0 +1,55 @@
+
+#####  ==========  mounts/FSs/DISKs/...
+_______:  mounts...:
+    - mount NTFS   T2FS_P  :  mount /dev/sdc1  /mnt/t1 -o uid=u1,gid=gu1,dmask=000,fmask=111,nls=utf8,utf8,noatime,windows_names
+    - mount exFat  T2FS_P  :  mount /dev/sdb4  /mnt/s1  -o rw,nosuid,nodev,noexec,noatime,uid=1501,gid=1500,fmask=0113,dmask=0002,allow_utime=0020,iocharset=utf
+	---
+	- fstab-changes-reload:   systemctl daemon-reload
+##________________________________________  ___________________________
+
+
+#####  ==========  HDs-/Parts-/Medias-Status and infos, also for Bup into L1NW-status-logs  Dxx_nts.txt , HDs-structure-bup, parts....: !!! DIFF between commands per DISKS or per Partitions!!:
+_______:  grub-qckys:
+	vi  -p  /etc/default/grub  /boot/grub/grub.cfg  /boot/grub/custom.cfg   /etc/grub.d/*
+
+_______:  lsblk :
+	-!!!  DIFF   UUID<--->PARTUUID  :
+	UUID is the ID of the filesystem, eg relevant for grub-boot !
+	PARTUUID  is the ID of the Partition , eg relevant for UEFI-bootloader !! (pre-FS !)
+	checkit with: lsblk -o UUID,PARTUUID
+	lsblk  -f  -o+SIZE,TYPE,RM,MODEL,SERIAL
+	lsblk  -o   NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,SIZE,TYPE,RM,MODEL,SERIAL
+	sorted-PartNames, but then NO tree, but listing : lsblk  -xNAME ...  ##/OR -x<sort-field-ID>
+
+_______:  fscks_cu:
+    sudo  umount /up1/mesfs/mesp1  ;  fsck.ext4  -p -D -E optimize_extents -f -F  /dev/mapper/mespfsc1    ##--mesp1
+    fsck.exfat -p -v  /dev/sda4 ;  fsck.vfat -p -v  /dev/sda2 ; 
+
+_______:  
+	fsck.ext4  -p -D -E optimize_extents -f -F -c -k  /dev/sdbX    ##--/OR -cc for read+WRITE-chek, but then takes much longer! on-x13-usbcard 4-std/18-GB  for arx1 on /dev/sdb3 !
+	fsck -MC    /dev/sdb4
+	fdisk -l    /dev/sdb   >> Dxx_nts.txt
+	tune2fs -l  /dev/sdb3  >> Dxx_nts.txt
+	sfdisk -d   /dev/sdb   > sfdisks/Dxx.$($cuds).sfdisk
+	dumpe2fs    /dev/sdb4  > sfdisks/DxxPx.sdb4.$($cuds).dumpe2fs 
+	echo "=========== $(date) : ==================" >> HDxx.txt
+
+_______:  USB-Devs:
+	- check/verify USB-Stick-physical-health (bad blocks):  
+		- e2fsck  -c[c]  /dev/sdXX ...
+		/OR first only finding bad sectors:
+		- badblocks  -s  -w  -o usb64-badblocks1.log  /dev/sdc  ##--> takes rather long! for 64GB-USB3-Stick to USB3-port 3-4 hours !?
+		if found bad sectors/blocks, then later by formating do: e2fsck -l usb64-badblocks1.log  /OR better: e2fsck  -c[c] ##--see man e2fsck
+##________________________________________  ___________________________
+
+
+#####  ==========  mswin_filesystems ... :
+_______:  mtools:
+	minfo -i /dev/sda1 ::             ##shows lot of infos about the part !!
+	mlabel -i /dev/sdb1 -s ::         ##shows label (without using config file for interfaces)
+	mlabel -i /dev/sda3 ::T1_Loc_RF   ##sets label (without using config file for interfaces)
+	--- utils in arx1:
+	catdoc	: A convertor for Microsoft Word, Excel, PowerPoint and RTF Files to text ;
+	pacman -Syu  catdoc ; /usr/bin/catdoc ,  /usr/bin/catppt , /usr/bin/wordview , /usr/bin/xls2csv
+##________________________________________  ___________________________
+
