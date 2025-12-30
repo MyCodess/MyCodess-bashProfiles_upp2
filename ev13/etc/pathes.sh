@@ -36,8 +36,8 @@ vaarAuBups2DP="${vaarAuBups1_P}/bupsvar2"
 
 #============= /t1-main-subDirs, 1.levels : =================================
 t1varDP="${TP1DP}/t1var"
-docsvarDP="${t1varDP}/docsvar"
-dwsvarDP="${t1varDP}/DWsvar"
+docsvarDP="${t1varDP}/docs${q_Label1var}"
+dwsvarDP="${t1varDP}/DWs${q_Label1var}"
 ##--obsl, replace by t1var :  lagDP="${TP1DP}/lag"
 npsDP="${TP1DP}/nps"
 #__ packsDP="${TP1DP}/packs"
@@ -51,10 +51,10 @@ npshddDP="${q_Bups1LocMed1RTDP}/T1_Loc/nps"
 
 ##============= vaarAu-dirs; all.users.VAR-dirs for curr works: ALL-Users / Share-Vars : ===============
 #-- evv.vars/spoolings (here using vaarAuDP, but could be HOME/..):
-vaarAuAppsDP="${vaarAuDP}/appsvar"  ##--ofc-
+vaarAuAppsDP="${vaarAuDP}/apps${q_Label1var}"
 vaarAuLogDP="${vaarAuDP}/log"
 vaarAuOldsDP="${vaarAuDP}/olds"
-vaarAuSyysDP="${vaarAuDP}/syysvar"            # for syys stuff as rpmlists,...
+vaarAuSyysDP="${vaarAuDP}/syys${q_Label1var}"
 vaarAuTestsDP="${vaarAuDP}/tsts"
 vaarAuSpoolDP="${vaarAuDP}/spool"
 vaarAuTmpDP="${vaarAuDP}/tmp"
@@ -112,6 +112,8 @@ lxSHsdntsDP="${dntsDP}/lxSHs_dnts"
 lxOSDocsDP="${dcItDP}/LxOSs_dc"
 
 #-
+arxdntsDP="${lxOSsdntsDP}/arx_dnts"
+nwsdntsDP="${lxOSsdntsDP}/NWs-lx"
 bashdntsDP="${lxSHsdntsDP}/bashs"
 gitsdntsFP="${dntsDP}/devops-buildConfMgm_dnts/gities/gits_dnts.txt"
 vimsdntsFP="${lxCmdsdntsDP}/vims_dnts.txt"
@@ -137,14 +139,14 @@ l1nwBupsLogsFlagsDP="${l1nwStatsDP}/BupsLogsStats_l1nw"
 syysNPsDP="${npsDP}/${q_osTg}_nps"
 #__ syysPacksDP="${packsDP}/${q_osTg}_pk"
 #__ syysCDDP="${packsDP}/${q_osTg}_cd"
-##----- q_syysTg_vars:
-syysVarDP="${vaarAuDP}/${q_osTg}var"       ##-I- could be set to ${q_syysTg}var if needed paralle same syys-vars !
+##----- q_syysTg-vars:
+syysVarDP="${vaarAuDP}/${q_osTg}${q_Label1var}"       ##-I- could be set to ${q_syysTg}var if needed paralle same syys-vars !
 syysVarUnpDP="${syysVarDP}/unp"
 syysLocReposDP="${syysVarDP}/repos1"
 #------ q_syysTg-docs/dnts/... in w1/t1 ...:
 syys_dnts_DP="${lxOSsdntsDP}/${q_osTg}${q_Label1dnts}"
 syys_nps_DN="${q_osTg}_nps"
-syys_wk_DP="${vaarAuWorksDP}/${q_osTg}_wk1"
+syys_wk_DP="${vaarAuWorksDP}/${q_osTg}${q_Label1wk}"
 syys_dc_DP="${lxOSDocsDP}/${q_osTg}_dc/"
 ##----- q_syysTg_stats_pathes:
 : ${q_syysTgDP:="${syysDP}/${q_syysTg}"}

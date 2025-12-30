@@ -51,6 +51,9 @@ alias  cdsyysdnts='cd  $syys_dnts_DP && ls1 -la && pwd ;'
 alias vistat1='vi1   ${syysTgStats_dntsFP}'
 alias visetup1='vi1  -o  ${syysTgStatsDP}/setup*_dnts.txt'  ##__1org:  alias visetup1='vi1   +  ${syysTgSetupdntsFP}'
 alias cdsyystg='cdlla  ${q_syysTgDP}'
+alias cdsyysstat1='cdlla  ${syysTgStatsDP}'
+alias cdsyysvar='cdlla  ${syysVarDP}'
+#_ alias cdsyyscd='cdlla  ${syysCDDP}'
 
 ##========== OS/XWins/apps/syystem/utils/SWs... misc: =====
 ##----- dbus/OS1-shorties:
@@ -63,13 +66,14 @@ alias viv1='vivaldi-stable   --incognito  > /dev/null  2>&1  &'
 #
 ##========== Terminals:
 #-I-without --disable-server : it opens new tabs in the calling-tab-window!
-alias  te1='xfce4-terminal     --disable-server  --tab --tab --tab --tab &';
-alias  te1te='xfce4-terminal   --disable-server  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${syys_dnts_DP}  --tab --working-directory=${lxOSsdntsDP}  --tab  --working-directory=${syys_wk_DP}  --tab --working-directory=${syysVarDP}  --tab --working-directory=${q_syysTgDP}  --tab  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${vaarAuTestsDP} &'  ##--prev:-colored-xfce4-term:  XDG_CONFIG_HOME=~/.config/00xdg2/  
-alias  te1wks='xfce4-terminal  --disable-server --geometry  120x62  --default-working-directory=${vaarAuWorksDP}  --tab  --active-tab  --tab  --tab  --tab  --tab  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${SW1dres1kkDP}  --tab --working-directory=${SW1dntsDP}  &'
-alias  te1mps='xfce4-terminal  --disable-server  --working-directory=${mpswpDP}  --tab  --working-directory=${mpswpDP}/Listings_Logs_MPs_Curr --tab         --working-directory=${mpsNps1DP}  --tab  --working-directory=${mpsNps1DP}  --tab --working-directory=${mpsG0RTDP}  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/0MPAs_G0s  &'
-alias  te1wpd='xfce4-terminal  --working-directory=${tosoDP}  --tab --working-directory=${wpDP}  --tab --working-directory=${absDP}  --tab --working-directory=${wpDP}/kg1-wp  --tab --working-directory=${wpDP}/0cu1-wp  --tab --working-directory=${tosoDP} &'
-alias  te1dbus="export DISPLAY=":0.0" ;  dbus-run-session -- xfce4-terminal --disable-server --tab --tab --tab --tab &"
-alias  te1gb="xfce4-terminal  --disable-server  --working-directory=${gtW1LocReposRTDP}/dres_gt  --tab  --working-directory=${gtW1LocReposRTDP}/evv_gt  --tab --working-directory=${gtW1LocReposRTDP}/repo1  --tab --working-directory=${gtW1LocReposRTDP}/syncFolders1  &"  ##--gh-github-loc-repos-gits_w1
+alias  te1="$te1cmd1b  --tab --tab --tab --tab &";
+alias  te1dbus="export DISPLAY=":0.0" ;  dbus-run-session -- $te1cmd1b --tab --tab --tab --tab &"
+alias  te1gb="$te1cmd1b  --working-directory=${gtW1LocReposRTDP}/dres_gt  --tab  --working-directory=${gtW1LocReposRTDP}/evv_gt  --tab --working-directory=${gtW1LocReposRTDP}/repo1  --tab --working-directory=${gtW1LocReposRTDP}/syncFolders1  &"  ##--gh-github-loc-repos-gits_w1
+alias  te1mps="$te1cmd1b  --working-directory=${mpswpDP}  --tab  --working-directory=${mpswpDP}/Listings_Logs_MPs_Curr --tab         --working-directory=${mpsNps1DP}  --tab  --working-directory=${mpsNps1DP}  --tab --working-directory=${mpsG0RTDP}  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/dw_MPs  --tab  --working-directory=${mpsG0RTDP}/0MPAs_G0s  &"
+alias  te1syystg="$te1cmd1b  --working-directory=${q_syysTgDP}  --tab --working-directory=${syysTgStatsDP}  --tab --working-directory=${syys_wk_DP}  --tab --working-directory=${syysVarDP}  --tab --working-directory=${syys_dnts_DP}  --tab --working-directory=${lxOSsdntsDP} &"
+alias  te1te="$te1cmd1b  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${syys_dnts_DP}  --tab --working-directory=${lxOSsdntsDP}  --tab  --working-directory=${syys_wk_DP}  --tab --working-directory=${syysVarDP}  --tab --working-directory=${q_syysTgDP}  --tab  --working-directory=${vaarAuTestsDP}  --tab  --working-directory=${vaarAuTestsDP} &"
+alias  te1wpd="$te1cmd1a  --working-directory=${tosoDP}  --tab --working-directory=${wpDP}  --tab --working-directory=${absDP}  --tab --working-directory=${wpDP}/kg1-wp  --tab --working-directory=${wpDP}/0cu1-wp  --tab --working-directory=${tosoDP} &"
+##__??:  alias  te1wks="$te1cmd1b --geometry  120x62  --default-working-directory=${vaarAuWorksDP}  --tab  --active-tab  --tab  --tab  --tab  --tab  --tab --working-directory=${q_SW1DocsDP}  --tab --working-directory=${SW1dres1kkDP}  --tab --working-directory=${SW1dntsDP}  &"
 
 ##---------- vimss/gvims:
 alias vifstab='vi1 /etc/fstab'
@@ -134,8 +138,6 @@ alias cdnps='cdlla  ${npsDP}'
 alias cdnps2='cdlla  ${nps2DP}'
 alias cdbupsvar1='cdlla  ${vaarAuBups1DP}'
 alias cd2so='cdlla  ${tosoDP}'
-alias cdsyyscd='cdlla  ${syysCDDP}'
-alias cdsyysstat1='cdlla  ${syysTgStatsDP}'
 alias cdte='cdlla  ${vaarAuTestsDP}'
 alias cdwks='cdlla  ${vaarAuWorksDP}'
 alias cdtr='cdlla  $trDP'
@@ -144,6 +146,8 @@ alias cdtr='cdlla  $trDP'
 ##========== devels/ITs/SWs/... : =========================
 #--
 alias cdlxossdnts='cdlla  ${lxOSsdntsDP}'
+alias cdarxdnts='cdlla  ${arxdntsDP}'
+alias cdnwsdnts='cdlla  ${nwsdntsDP}'
 #--dres/dnts_0:
 alias cddnts='cdlla  ${dntsDP}'
 alias cddres='cdlla  ${dresDP}'

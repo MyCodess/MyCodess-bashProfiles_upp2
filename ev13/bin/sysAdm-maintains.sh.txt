@@ -1,0 +1,66 @@
+__________________  system-admins-maintains.sh.txt : _________________________
+exit 3
+
+
+#####  ==========  init 0/1/3 with systemd ... ("target"  instead system-V init-levels!):
+systemctl  list-units  --type=target   ##--listing of all possible init-levels/targets
+-! by boot-up, boot into init-X :  add to the kernel-params in grub.cfg:  systemd.unit=X ;   https://wiki.archlinux.org/index.php/Kernel_parameters#Parameter_list
+- /OR switch into init-X , eg goto init-3/no-XWin :   systemctl isolate  runlevel3.target  ;/OR  multi-user.target  ;  https://wiki.archlinux.org/index.php/Systemd#Targets
+	- boot-into-init-1/single-user:  	systemd.unit=runlevel1.target    /OR   systemd.unit=rescue.target
+	- boot-into-init-3/Multi-user,   	systemd.unit=runlevel3.target    /OR   multi-user.target ##non-graphical
+	- boot-into-init-5/graphical:    	systemd.unit=runlevel5.target    /OR   graphical.target
+##________________________________________  ___________________________
+
+
+#####  ==========  systemctl oneLiners/qkys:
+_______:  show/list/display...:
+- oneLiner-status of running (units) services:
+	systemctl list-units -q  --no-pager  docker*  contain* kub*  [ --type=service ...]
+	systemctl --type=service --state=running  --no-pager [ --no-legend ]
+- oneLiner enable-status of installed-services (unit-files):
+	systemctl list-unit-files  --no-pager docker*  contain* kub*
+- only running/active services:   systemctl list-units --type=service --state=running
+- ! help for the possible values of state=xxx :  systemctl --state=help
+- grep/filtered list-units with regexp (instead grep):  systemctl list-units xxx*   ##--man:  list-units [PATTERN...]
+- Only-services (not targets/devices/...):   systemctl list-unit-files --type=service
+- PKI/smartcard-daemon:  alias sc1='sudo systemctl status   pcscd.service   pcscd.socket'   #-smartcard/pki-start
+##________________________________________  ___________________________
+
+
+#####  ==========  sudos:
+_______:  profiles running with sudo cmds:
+	--- nts:
+	- two points/problems considering if youwant run evv-funcs/aliases:  1-if-Abfrage in /etc/bash.bashrc : if the shell is non-interactive do nothing/exit !  2-aliases NOT expanded in non-interactive mode!
+	-! (somehow did NOT work for aliases even with: shopt -s expand_aliases ; ... ! ONLY worked with /bin/bash -i ... !!)
+	-! "sudo -i ...", then  the bash-shell itself is NOT in interactive mode yet !so aliases are not applied. 
+	-! sudo -i / -s ...: does NOT execute shell-profiles, also due to the Abfrage-if-interactive in /etc/bash.bashrc !! sudo-call is as default non-interactive and with -i profiles are stopped in /etc/bash.bashrc !! so for executing your profiles:
+	--- OK-for-funcs/cmds---NOT-for-aliases):
+	sudo -- /bin/bash -c  "q_profsDebug11=10 source /up1/.cev/etc/profile.sh ; func1 xx yy" ##--BUT-NOT working for aliases !!
+	--- OK-for-all (incl. aliases):
+	sudo -- /bin/bash -i -c  "q_profsDebug11=10 source /etc/bash.bashrc ; alias1 "  ##--must -i at least here for arx, due to if-Abfrage-if-interactive in /etc/bash.bashrc !
+	- for aliases (two problems: 1-if-Abfrage-if-interactive in /etc/bash.bashrc  2-aliases not expanded in non-interactive mode!):
+	--- not-working then:
+	sudo -- /bin/bash  -c  "q_profsDebug11=10 source /etc/bash.bashrc ; nwsConn1  1q_bib_HBoell_wpa1.conf" ##--Not working also, but just due to the if-clause there in /etc/bash.bashrc, to check if the shell is interactive !!
+	sudo -- /bin/bash  -c  "shopt -s expand_aliases ; tq_profsDebug11=10 source /up1/.cev/etc/profile.sh ; shopt -s expand_aliases ; alias1"  ##--!also NOT-working for aliases! but fine for funcs!
+##________________________________________  ___________________________
+
+
+#####  ==========  syysTg Kernl-params/sysct , Kernel-Modules, ... :
+(el1d  "cmd:  sysctl --all" ;  sudo sysctl --all | sort  ; el1de ) >   ${syysTgStatsConfigsDP}/kernel-params-sysctl-$($cudts).log
+(el1d  "cmd: lsmod " ;  lsmod | sort  ; el1de ) >   ${syysTgStatsConfigsDP}/kernel-modules-$($cudts).log
+##________________________________________  ___________________________
+
+
+#####  ==========  syysStat-updates:
+- putting putNoBupFlag.sh in all cache/trash/...-Dirs:  find /home/  -type d  \( -iname "*trash*" -o -iname "tmp" -o -iname "*thumbnails*" -o -iname "*cach*" -o -iname .chmsee -o -iname .beagle -o -iname .adobe -o -iname .macromedia \) -exec putNoBupFlag.sh {}  \; 
+- syysStat-update: syysStat.sh >> ${syysTgStatsNtsFP} 2>&1
+- syys-bup from t1->t2 (preferably do it with rsync !!):
+	(el1d  ; echo "BACKUP on medias1 :" ; date ; hostname ; el1d  ) >> ${syysDP}/${syncFlgFN}
+	- only-curr-syysTg:   cp -uRd -v --preserve=timestamp  ${syysTgDP}   ${bups2DP}/sy1/$(hostname)/
+	- whole-syys-dir:    cp -uRd -v --preserve=timestamp  ${syysDP}/*  ${bups2DP}/sy1/$(hostname)/
+-- prev-bup-to-syystg...:
+tar -cjvf $($cuds)_${LOGNAME}_kde.tbz --exclude-caches  --exclude-tag="${uueNoBupFlagFN}"  --show-omitted-dirs .kde .kderc
+cp $($cuds)_${LOGNAME}_kde.tbz  $sysIDBupsDP
+mv $($cuds)_${LOGNAME}_kde.tbz  $vaarAubups2DP
+##________________________________________  ___________________________
+

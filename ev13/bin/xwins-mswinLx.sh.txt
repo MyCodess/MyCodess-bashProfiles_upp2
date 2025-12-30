@@ -23,12 +23,3 @@ exit 3
 ##________________________________________  ___________________________
 
 
-#####  ==========  mtools:
-	minfo -i /dev/sda1 ::             ##shows lot of infos about the part !!
-	mlabel -i /dev/sdb1 -s ::         ##shows label (without using config file for interfaces)
-	mlabel -i /dev/sda3 ::T1_Loc_RF   ##sets label (without using config file for interfaces)
-	--- utils in arx1:
-	catdoc	: A convertor for Microsoft Word, Excel, PowerPoint and RTF Files to text ;
-	pacman -Syu  catdoc ; /usr/bin/catdoc ,  /usr/bin/catppt , /usr/bin/wordview , /usr/bin/xls2csv
-##________________________________________  ___________________________
-

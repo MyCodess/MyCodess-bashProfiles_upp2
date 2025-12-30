@@ -1,0 +1,10 @@
+______________________________ fedora/RH qkys bins stuff ...:: __________________________________
+
+_______:  rpms/dnfs...:
+--- listing-logs:
+rpm -qa > rpm-qa-$($cudts).log
+dnf list  >   dnf-list.log-$($cudts).log
+systemctl list-units >  systemctl--list-units--$($cudts).log
+systemctl list-unit-files >  systemctl--list-unit-files--$($cudts).log
+---
+
