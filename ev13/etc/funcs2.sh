@@ -141,7 +141,7 @@ cleanFP1() {
 	retval11="$(echo $retval11 | sed  -e 's@//*@/@g'   -e 's@[^[:alnum:]/_.-]@_@g'  -e 's@^[-_]*@@'  -e 's@_\.@.@'  -e 's@__*@_@g' )";  ##--I-could use \+ instead * for 0ne-or-more, but is GNU-extension! so leave it so maybe!? 
 }
 ##---
-cpt1="cp  -ixv  -d --preserve=timestamp -r";  mvi1="mv  -iv   --strip-trailing-slashes";  ##--I-as aliases does NOT work properly cpt/mvi, so here defined as VARs !
+cpt1="cp  -ixv  -d --preserve=timestamps  -r";  mvi1="mv  -iv   --strip-trailing-slashes";  ##--I-as aliases does NOT work properly cpt/mvi, so here defined as VARs !
 dtRename1() {
 	local cmd111="$1"  ; local oldFP111="$2" ;
 	local newfp111="${3:?'USAGE: dtRename1 <cmd> <old-FP> <new-FP>  : move/copy a file with a Date-/time-stamped newName '}" ;

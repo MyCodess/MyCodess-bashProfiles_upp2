@@ -92,8 +92,14 @@ alias gvimtit1x='gvimtit1  -g -p ./*.txt'  ##--x==tXt
 alias gvimtit1xx='gvimtit1 -g -p  $(ls  *.txt  *.log  *.csv  *.tsv *sh *.out)'  ##--I-if no ls but just eg *.txt, then *.xx will be shown in a tab, if no file there!
 alias gvimexp='gvi1  -c ":15Lexplore"'
 
-##========== w1-/w1_m-tree: ===============================
+##========== upp-first-level-DIRs/items : =================
 alias cdw1='cdlla  $w1DP'
+alias cdt1='cdlla  $TP1DP'
+alias cdt2='cdlla  $TP2DP'
+alias cdt3='cdlla  $TP3DP'
+alias cdt4='cdlla  $TP4DP'
+
+##========== w1-/w1_m-tree: ===============================
 alias cddc1k='cdlla  $dc1kDP'
 ##---------- w1-docsm_1kk :
 alias cddevcdocs='cdlla  $devcDocsDP'
@@ -166,8 +172,8 @@ alias afg='(alias && declare -pF)  | grep1  -i'  # igrep1  in aliases-Names+Defi
 alias afgn='(alias && declare -pF) | sed -e  "s/=.*//"  | grep1  -i'  # igrep1  only-in-NAMES of  aliases + funcNames
 # alias bashu='bash --rcfile $evvEnvFP' ; alias bashnorcs='bash --noprofile  --norc'
 alias cptafat='cp -ix -a --no-preserve=ownership'   ##-for FATs, or if uid/gid irrelevant!
-alias cptr='cp -ix   -Rd --preserve=timestamp'     ##-as -a but only timestamp relevant, rest egal! eg for FATs and more ...
-alias cpt='cp  -ixv  -d --preserve=timestamp'      ##-only time relevant
+alias cptr='cp -ix   -Rd --preserve=timestamps'     ##-as -a but only timestamps relevant, rest egal! eg for FATs and more ...
+alias cpt='cp  -ixv  -d --preserve=timestamps'      ##-only timestamps relevant
 alias df.='df -h .'
 ##__  alias dusk='du -x -sk * | sort -n ; du -x -sk  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sk * .[[:alnum:]]* | sort -n'
 ##__  alias dusm='du -x -sm * | sort -n ; du -x -sm  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sm * .[[:alnum:]]* | sort -n'
@@ -181,7 +187,7 @@ alias expgn='export -p  | sed -e 's:=.*::' | sort | grep1  -i '   ##--prev:-   "
 alias findinNotEvvNamings='find .  -depth  -regextype posix-extended    -regex  ".*[^[:alnum:]/_.-].*"  '  ##--find not-evvConform-Filenames
 alias grepi='grep1  -i'
 alias hs='history'
-alias hsg='fc -l -10000 | grep1  -i' #--i- not with history, so without timestamp, if activated.
+alias hsg='fc -l -10000 | grep1  -i' #--i- not with history, so without timestamps, if activated.
 alias hsrma='rm -iv $histfilePrev $HISTFILE $HOME/.*hist*  $HOME/.hs_* ; unset HISTFILE' ##--U-: -v -history-rm-...
 alias hsnofile='unset HISTFILE'  #--I-notsaving--but-do-hss-in-cu-shell!
 alias hsnono='unset HISTFILE; set +o history'  #--I-not-hss-at-all-in-cu-shell!
