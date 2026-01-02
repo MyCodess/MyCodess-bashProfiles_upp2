@@ -32,7 +32,7 @@ q_pls1  "${BASH_SOURCE[0]##*/}"         ##--prev:  export myname11="${BASH_SOURC
 ##========== post-pathes-/vars-prjX valid for all prjX after their prjProf_xxx.sh : =====================
 #---------- level.1 : prjX-roots-DPs of PRJ: prj.devel + prjVar + prjPkgs  DIRs/pathes: : --------------
 q_prjDP_upp="${q_prj0DP}/${q_prjID}"   ##-I- prj.devel/wks-root ##-??- prjTag instead prjNo ??  ##--2Do- wks/devel-dir NOT in vaarAuDP, but hier on vo17 just doing so....
-q_prjDP="$( realpath  ${q_prj0DP}/${q_prjID} )"   ##-I-if realpath cmd not therem then: q_prjDP="$( cd ${q_prj0DP}/${q_prjID} && pwd -P )"   ##-I- take now the real-path of prj-dir !
+q_prjDP="$( $physpathcmd1  ${q_prj0DP}/${q_prjID} )"   ##-I-if $physpathcmd1 cmd not therem then: q_prjDP="$( cd ${q_prj0DP}/${q_prjID} && pwd -P )"   ##-I- take now the real-path of prj-dir !
 
 #--------- level.2 : prjX-sub-dirs,  : --------------
 # _______:  prj-main-DIRs-in-prjDP (prj w1, t1, devel1, varx1, ...):

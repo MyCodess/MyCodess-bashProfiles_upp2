@@ -36,7 +36,7 @@ set  -u  ##--I-must be after Init1-part !!
 myname11="${BASH_SOURCE[0]##*/}" ;
 q_OrgCallParam="${BASH_SOURCE[0]}"       ##-I-  org-call-parameter, as this script was called by the user, eg ./up1/etc/profile.sh ; could be relative/absolute-path !
 q_OrgCallParamDP="${q_OrgCallParam%/*}"       ##-I-  org-call-DIR  of this script by caller/user as it was called! it could be relative OR absolute! , as ./evXX/etc /OR /evXX/etc 
-q_OrgCallAbsolutePhysDP="$($physpathcmd1 $q_OrgCallParamDP)"   ##-I-  org-call-DIR-full-absolte-RealPhysical-path  of this script by caller/user without links, only ohysical! but really NOT used! just for info! should NOT be used !! 1OK-but-with-cd:  "$(cd  -P  $q_OrgCallParamDP && pwd -P)"
+q_OrgCallAbsolutePhysDP="$($physpathcmd1 $q_OrgCallParamDP)"   ##-I-  org-call-DIR-full-absolte-Real_Physical-path  of this script by caller/user without links, only ohysical! but really NOT used! just for info! should NOT be used !! 1OK-but-with-cd:  "$(cd  -P  $q_OrgCallParamDP && pwd -P)"
 q_OrgCallAbsoluteDP="$(cd   $q_OrgCallParamDP    && pwd -L)"   ##-I-MAIN-path-used !!  org-call-DIR-full-absolte-path  of this script by caller/user, as /tmp/tempu/up1/etc : ONLY-this/absolutepath will be uses for the rest of evEnv-vars!
 q_OrgCallAbsoluteFP="${q_OrgCallAbsoluteDP}/${myname11}"         ##-I-NOT really used, but just for infos,..., abolute-FilePath of callein this profile
 : ${USER:="$(whoami)"} ;   ##--in case the USER is not set ! whoami == id -un  ##--2do? : whoami and id belong to coreutils ! is the cmd  whoami always there !?

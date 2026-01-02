@@ -14,7 +14,7 @@ mespRFFP=${mespRTDP}/${mespRFFN}
 mespRFLoopFP=/dev/loop${mespRFNo}  #--obsl-but-ok-here.
 mespRFMapperFP=/dev/mapper/${mespRFFN}
 ##--??needed??-   mespRFPhysFN=${mespRFFN}_RF
-##--??needed??- done with realpath in funcs! :  mespRFPhysFP="${uufs1PhysDP}/${mespRFPhysFN}"
+##--??needed??- done with real_path in funcs! :  mespRFPhysFP="${uufs1PhysDP}/${mespRFPhysFN}"
 
 ##----- mesp_AR:
 declare -xi mespARNo=3
@@ -24,7 +24,7 @@ mespARFP=${mespRTDP}/${mespARFN}
 mespARLoopFP=/dev/loop${mespARNo}
 mespARMapperFP=/dev/mapper/${mespARFN}
 ##--??needed??-   mespARPhysFN=${mespARFN}_AR
-##--??needed??- done with realpath in funcs! :  mespARPhysFP="${uufs1PhysDP}/${mespARPhysFN}"   ##--II- is yet partly not physicar (/mnt/VARUfs/...) but ok for backups,...!
+##--??needed??- done with real_path in funcs! :  mespARPhysFP="${uufs1PhysDP}/${mespARPhysFN}"   ##--II- is yet partly not physicar (/mnt/VARUfs/...) but ok for backups,...!
 
 #----- MEs-roots/basics-Pathes...:
 mesDP="${mespRFDP}/MEs"
@@ -118,13 +118,13 @@ bups1syysModFiles2() {
 bups1syys() { echo "===== bups1--${syysDP} : ====="; bups1configsUsers ; bups1syysModFiles ; "${q_BinDP}/syysTgStat.sh"  >> $syysTgStatsLogFP  2>&1 ; rsync  -v  -rtlHOx --modify-window=5  --delete    ${syysDP}  ${vaarAuBups1DP}/  ; }
 bups1mesp() {
 	if [ -a  "$mespRFFP" ]; then
-		src11_FP="$(realpath  ${mespRFFP})";   to11_FP="${vaarAuBups1DP}/${src11_FP##*/}--$($cudts)" ;
+		src11_FP="$($physpathcmd1  ${mespRFFP})";   to11_FP="${vaarAuBups1DP}/${src11_FP##*/}--$($cudts)" ;
 		echo "===== bups1--${src11_FP} : ====="; 
 		date;  cd  ${vaarAuBups1DP}/  &&  cp -v -p -L  "${src11_FP}"  "${to11_FP}" ; date;
 	else echo "$q_warnTag :: NOT_backuped ! file does NOT exist:  $mespRFFP";
 	fi
 }
-bups3mespAR() { src11_FP="$(realpath  ${mespARFP})"; to11_FP="${vaarAuBups1DP}/${src11_FP##*/}--$($cudts)" ; echo "===== bups3--${src11_FP} : ====="; date;  cd  ${vaarAuBups1DP}/  &&  cp -v -p -L  "${src11_FP}"  "${to11_FP}" ; date; }
+bups3mespAR() { src11_FP="$($physpathcmd1  ${mespARFP})"; to11_FP="${vaarAuBups1DP}/${src11_FP##*/}--$($cudts)" ; echo "===== bups3--${src11_FP} : ====="; date;  cd  ${vaarAuBups1DP}/  &&  cp -v -p -L  "${src11_FP}"  "${to11_FP}" ; date; }
 ##--bups3-All:
 bups3etc()  { echo "===== bups3--/etc : ====="; date;  cd  ${vaarAuBups1DP}/  &&  tar --one-file-system  -cpzf  "${vaarAuBups1DP}/etc_${q_syysTg}--$($cudts)"   /etc  ; date; }
 ##--bups5-All / basicall could be replaced by whole-OS-cloning/bup bzw. usb_OS-cloning or so ,...!?::
