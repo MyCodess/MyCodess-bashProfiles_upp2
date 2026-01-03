@@ -1,0 +1,73 @@
+__________________________ usb128-HP-SSD-Stick as T2FS_RF _______________________________________________
+- HP x911w USB SSD 3.2 Flash-Laufwerk 128GB, 500MB/s Lesegeschwindigkeit, 450MB/s Schreibgeschwindigkeit, Push-und Pull-Design, Black  , 
+	https://www.amazon.de/HP-Flash-Laufwerk-Lesegeschwindigkeit-Schreibgeschwindigkeit-Pull-Design/dp/B0B1WSTNBL  , /:251200--bestell!
+
+
+#####  ==========  /:260101 :  
+_______:  MPs_nps1 , on HP13 ::
+-- init:
+du -sm  /up1/t1/nps/0nps2/MPs_nps1/   ##-->  4974 MB
+nps : date;  cp -a  /up1/t1/nps/0nps2/MPs_nps1/   /up1/t2/bups1/; sync; date  ##--: 1.10 min  ::  2026-01-01T15:19:58 CET  ,  2026-01-01T15:21:09 CET
+
+_______:  sy1 ,  on HP13 (kk1Syys)
+rsync  -n -av --delete  --no-perms  /up1/t2/bups1/sy1/2512fed/ /up1/t1/sy1/2512fed/   ##--first update the dvl1Syys
+rsync  -n -av --delete  --no-perms  /up1/t1/sy1/    /up1/t2/bups1/sy1/
+
+_______:  /up1/w1/  ,  both on HP13-usbA ::
+rsync -n -av --delete --no-perms     /up1/w1/  /up1/t2/w1_BP1/
+-- init:
+du -sm /up1/w1/     ##-->   2942   /up1/w1/
+date; cp -ix   -Rd --preserve=timestamps  /up1/w1/  ./w1_BP1 ; date  ##-- < 1-min : 2026-01-01T14:32:02 CET  ,   2026-01-01T14:32:48 CET
+
+_______:  w2_RF ,  both to usbA-Lenovo-T460s-NB_ca1  :
+-- init:  w2_RF on last-usb128-2209arx !
+du -sm //mnt/s1/t1_RF/w2_CP  ##--:: 6593 MB
+date;  cp -ix -Rd --preserve=timestamps  //mnt/s1/t1_RF/w2_CP  /mnt/t1/t2_RF/w2_RF ; sync; date;  ##--:: genau 3 min : 2026-01-01T11:29:37 CET  ,  2026-01-01T11:32:36 CET
+
+##________________________________________  ___________________________
+
+
+
+
+
+##############################  einmallige / coll/ logs/ ... weg:: #############################################
+#####  ==========  /:260101 :  einmallige vom Red-HD alles t2 zum HP-SSD-Stick:
+_______:  
+t2_1kks_RF : dusm
+1256	./1kk2_RF
+14047	./1mes2_RF
+15303	.
+
+/up1/media/tx_RF/tx_RF
+tx_RF : date; cp -a t2_1kks_RF/ /up1/media/T2fs/t2_RF/  ; sync ; date;
+2026-01-01T17:33:12 CET
+2026-01-01T17:36:41 CET
+
+_______:  
+/up1/media/tx_RF/tx_RF/2So-nps1
+2So-nps1 : dusm
+85	./231003-FTs_1kk-nps1
+264	./251025-nps2-arx1
+4020	./241001-nps2-arx1
+4368	.
+
+/up1/media/tx_RF/tx_RF/2So-nps1
+2So-nps1 : date;  cp -a *  /up1/media/T2fs/t2_RF/nps_2So ; sync; date;
+2026-01-01T17:44:46 CET
+2026-01-01T17:46:00 CET
+
+_______:  
+/up1/media/tx_RF/tx_RF/t2_RF
+t2_RF : dusm
+13773	./Fts-Vds_1kk_RF
+13774	.
+
+/up1/media/tx_RF/tx_RF/t2_RF
+*t2_RF : date;  cp -a Fts-Vds_1kk_RF/  /up1/media/T2fs/t2_RF/  ; sync; date;
+2026-01-01T17:48:54 CET
+2026-01-01T17:52:09 CET
+
+_______:  
+
+##________________________________________  ___________________________
+

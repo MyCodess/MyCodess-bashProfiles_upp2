@@ -110,8 +110,8 @@ syncFlagUpdate(){
 	src1="$1"
 	target1=${2:?"$USAGE11 ; $USAGE11_eg"} ;
 	syncFlagFP="${src1}/${syncFlagFN}"
-	backupInfosSrc=" _RF/source--backedup_from:   $(hostname) :  $src1     on: $(cd "$src1" || return 3;  pwd -P)"    ##--II-could also use:  readlink  -mve /up1/w_CP_rw  #/OR  realpath -Pe /up1/w_CP_rw/
-	backupInfosDest=" _BP/_CP/dest--backedup_to:   $(hostname) :  $target1  on: $(cd $target1 || return 3; pwd -P ; pwd -P; ls -l)"   ##--II-could also use:  readlink or realpath ! see above.
+	backupInfosSrc=" _RF/source--backedup_from:   $(hostname) :  $src1     on: $(cd "$src1" || return 3;  pwd -P)"    ##--II-could also use:  readlink  -mve /up1/w_CP_rw  #/OR  $physpathcmd1  -Pe /up1/w_CP_rw/
+	backupInfosDest=" _BP/_CP/dest--backedup_to:   $(hostname) :  $target1  on: $(cd $target1 || return 3; pwd -P ; pwd -P; ls -l)"   ##--II-could also use:  readlink or $physpathcmd1  ! see above.
 	cd "$src1" || return 3;  [[ -a $syncFlagFP ]] &&  chmod a+w $syncFlagFP ;
 	(el1d ; echo "$(hostname; date)"; echo "${backupInfosSrc}" ; echo "${backupInfosDest}" ; el1de ; ) >> $syncFlagFP ; ##-I- do not replace ; with && due to fat/NTFS-parts, where chmod is not possible due to mount-params!
 	chmod 444 $syncFlagFP;
