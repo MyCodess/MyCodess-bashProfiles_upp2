@@ -166,8 +166,8 @@ alias afg='(alias && declare -pF)  | grep1  -i'  # igrep1  in aliases-Names+Defi
 alias afgn='(alias && declare -pF) | sed -e  "s/=.*//"  | grep1  -i'  # igrep1  only-in-NAMES of  aliases + funcNames
 # alias bashu='bash --rcfile $evvEnvFP' ; alias bashnorcs='bash --noprofile  --norc'
 alias cptafat='cp -ix -a --no-preserve=ownership'   ##-for FATs, or if uid/gid irrelevant!
-alias cptr='cp -ix   -Rd --preserve=timestamp'     ##-as -a but only timestamp relevant, rest egal! eg for FATs and more ...
-alias cpt='cp  -ixv  -d --preserve=timestamp'      ##-only time relevant
+alias cpt='cp  -ixv  -d  --preserve=timestamps'      ##-only time relevant
+alias cptr='cp -ix   -Rd --preserve=timestamps'     ##-as -a but only timestamp relevant, rest egal! eg for FATs and more ...
 alias df.='df -h .'
 ##__  alias dusk='du -x -sk * | sort -n ; du -x -sk  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sk * .[[:alnum:]]* | sort -n'
 ##__  alias dusm='du -x -sm * | sort -n ; du -x -sm  .'     ##-if shell-glob-option not set fo ..-dirs: 'du -sm * .[[:alnum:]]* | sort -n'
