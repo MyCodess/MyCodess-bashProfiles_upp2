@@ -65,10 +65,10 @@ w1DPPhys="$($physpathcmd1 $w1DP)"  ##--physica-path-of-w1 for tars,.... ! #-1OK-
 ettcuDP=${q_UppDP}/etcu     #- var-root for all users, also individual users
 vaaruDP=${q_UppDP}/varu     #- var-root for all users, also individual users
 opptuDP=${q_UppDP}/optu     #- evv-opt-added, in msw praktisch /c/Progs2/
-TP1DP=${q_UppDP}/t1              #- T1-Partition
-TP2DP=${q_UppDP}/t2              #- T2-Partition
-TP3DP=${q_UppDP}/t3              #- T3-Partition
-TP4DP=${q_UppDP}/t4              #- T4-Partition
+TP1DP=${q_UppDP}/t1
+TP2DP=${q_UppDP}/t2
+TPBPDP=${q_UppDP}/txbp
+TPRFDP=${q_UppDP}/txrf
 
 #-- xxxAuDPs :
 ettcAuDP=${ettcuDP}/etcau      #- etc-shared-for-all-users

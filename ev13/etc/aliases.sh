@@ -96,8 +96,8 @@ alias gvimexp='gvi1  -c ":15Lexplore"'
 alias cdw1='cdlla  $w1DP'
 alias cdt1='cdlla  $TP1DP'
 alias cdt2='cdlla  $TP2DP'
-alias cdt3='cdlla  $TP3DP'
-alias cdt4='cdlla  $TP4DP'
+alias cdtxbp='cdlla  $TPBPDP'
+alias cdtxrf='cdlla  $TPRFDP'
 
 ##========== w1-/w1_m-tree: ===============================
 alias cddc1k='cdlla  $dc1kDP'
